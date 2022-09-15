@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
-class WaveGradienteHeader extends StatelessWidget {
-  const WaveGradienteHeader({ Key? key }) : super(key: key);
+class CurveHeader extends StatelessWidget {
+  const CurveHeader({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,41 +9,34 @@ class WaveGradienteHeader extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       child: CustomPaint(
-        painter: _WaveGradientHeaderPainter(),
+        painter: _CurveHeaderPainter(),
       ),
     );
   }
 }
 
-class _WaveGradientHeaderPainter extends CustomPainter{
+
+class _CurveHeaderPainter extends CustomPainter{
 
   @override
   void paint(Canvas canvas, Size size) {
-
-    final rect = Rect.fromCircle(
-      center: const Offset(150,55),
-      radius: 180
-    );
-
-    /*final Gradient gradient = LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: [
-      Color(0xff5581F1),
-      Color(0xff1DE5E2),
-    ]);*/
-
-    final paint = Paint();//..shader = gradient.createShader(rect);
-    paint.color = MyColors.primary;
-    paint.style = PaintingStyle.stroke;
+    final paint = Paint();
+    paint.color = const Color(0xff16A6A3);
+    paint.style = PaintingStyle.fill;
     paint.strokeWidth = 2;
 
     final path = Path();
-    path.moveTo(size.width*0.15, size.height*0.5);
-    path.quadraticBezierTo(size.width*0.3, size.height*0.1, size.width*0.5, size.height*0.2);
-    path.quadraticBezierTo(size.width*0.7, size.height*0.35, size.width, size.height*0.2);
-    path.quadraticBezierTo(size.width*0.7, size.height*0.8, size.width*0.65, size.height*0.8);
-    path.quadraticBezierTo(size.width*0.15, size.height, size.width*0.15, size.height*0.5);
+    path.moveTo(0, 0);
+    path.lineTo(0, 200);
+    path.quadraticBezierTo(size.width*0.5, 250, size.width, 200);
+    path.lineTo(size.width, 0);
+    path.lineTo(0, 0);
+    /*path.lineTo(0, size.height*0.25);
+    path.lineTo(size.width*0.5, size.height*0.35);
+    path.lineTo(size.width, size.height*0.25);
+    path.lineTo(size.width, 0);
+    path.lineTo(0, 0);*/
+
     canvas.drawPath(path, paint);
   }
 
@@ -52,5 +44,4 @@ class _WaveGradientHeaderPainter extends CustomPainter{
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
-
 }

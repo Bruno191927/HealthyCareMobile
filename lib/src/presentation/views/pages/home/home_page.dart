@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
+import 'package:healthycareapp/src/presentation/core/shared_widgets/card_information.dart';
 import 'package:healthycareapp/src/presentation/core/styles/my_text_styles.dart';
+import 'package:healthycareapp/src/presentation/views/pages/appoiment_home/appoiment_home.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = 'homepage';
@@ -27,12 +29,12 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Row(
                       children: [
-                        Text('Buen dia',style: MyTextStyles.normalStyleGray,),
+                        Text('Buen dia',style: MyTextStyles.subTitleGrayWhite),
                       ],
                     ),
                     Row(
                       children: [
-                        Text('Bruno Aguirre',style: MyTextStyles.subTitleStyleBold,),
+                        Text('Bruno Aguirre',style: MyTextStyles.titleStyleBold,),
                       ],
                     )
                   ],
@@ -50,21 +52,71 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.only(top: 20),
               width: double.infinity,
-              height: 200,
+              height: 100,
               decoration: BoxDecoration(
-                color: MyColors.secondary,
+                color: MyColors.primary,
                 borderRadius: BorderRadius.circular(20)
               ),
               child: Row(
                 children: [
                   Container(
-                    width: 120,
-                    height: 120,
+                    width: 80,
+                    height: 80,
                     child: Image.asset('assets/calendar.png')
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 20,),
+                      Text('Tu proxima cita: ',style: MyTextStyles.titleStyleWhiteBold),
+                      Text('19 de Noviembre',style: MyTextStyles.titleStyleBold)
+                    ],
                   )
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                Text('¿Que es lo que quieres hacer?',style: MyTextStyles.titleStyleBold)
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CardInformation(
+                  title: 'Mi Historial',
+                  imgLink: 'assets/historial.png',
+                  function: (){
+
+                  },
+                ),
+                CardInformation(
+                  title: 'Mis Analisis',
+                  imgLink: 'assets/analisis.png',
+                  function: (){},
+                )
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CardInformation(
+                  title: 'Separar cita',
+                  imgLink: 'assets/calendar.png',
+                  function: (){
+                    Navigator.pushNamed(context, AppoimentHome.routeName);
+                  },
+                ),
+                CardInformation(
+                  title: 'Dudas',
+                  imgLink: 'assets/chat.png',
+                  function: (){},
+                )
+              ],
+            ),
           ],
         ),
       ),
