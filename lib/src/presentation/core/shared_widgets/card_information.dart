@@ -33,7 +33,7 @@ class CardInformation extends StatelessWidget {
               width: 80,
               child: Image(image: AssetImage(imgLink)),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(title,style: MyTextStyles.titleStyleBold,)
           ],
         ),

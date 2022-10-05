@@ -25,9 +25,9 @@ class CardDayWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Text(FunctionsUtils.getMonths(monthsInt: dateTime.month),style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
-            Text(FunctionsUtils.getDayOfTheWeek(dayOfTheWeek: dateTime.weekday),style: TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
-            Text(dateTime.day.toString(),style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
+            Text(FunctionsUtils.getMonths(monthsInt: dateTime.month),style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+            Text(FunctionsUtils.getDayOfTheWeek(dayOfTheWeek: dateTime.weekday),style: const TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+            Text(dateTime.day.toString(),style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
           ],
         ),
       ),

@@ -11,8 +11,27 @@ class _ListCardsDaysWidgetState extends State<ListCardsDaysWidget> {
   @override
   Widget build(BuildContext context) {
     List<DateTime> days = _getDays();
-    double scrollPosition = (28*100) + 40;
-    return ListView.builder(
+    double scrollPosition = (28*100) + 60;
+    return CustomScrollView(
+      controller: ScrollController(
+        initialScrollOffset: scrollPosition
+      ),
+      scrollDirection: Axis.horizontal,
+      slivers: <Widget>[
+        SliverPadding(
+          padding: const EdgeInsets.all(20),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context,int index){
+                return CardDayWidget(dateTime: days[index]);
+              },
+              childCount: days.length
+            )
+          )
+        )
+      ],
+    );
+    /*return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 20),
       controller: ScrollController(
         initialScrollOffset: scrollPosition
@@ -22,23 +41,6 @@ class _ListCardsDaysWidgetState extends State<ListCardsDaysWidget> {
       itemBuilder: (BuildContext context, int index) {
         return CardDayWidget(dateTime: days[index]);
       },
-    );
-    /*return CustomScrollView(
-      scrollDirection: Axis.horizontal,
-      slivers: <Widget>[
-        SliverPadding(
-          padding: const EdgeInsets.all(20),
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context,index){
-                return CardDayWidget(dateTime: days[index]);
-              },
-              childCount: days.length,
-              semanticIndexOffset: 30
-            )
-          ),
-        )
-      ],
     );*/
   }
 

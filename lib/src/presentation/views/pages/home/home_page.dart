@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/card_information.dart';
 import 'package:healthycareapp/src/presentation/core/styles/my_text_styles.dart';
-import 'package:healthycareapp/src/presentation/views/pages/appoiment_home/appoiment_home.dart';
+import 'package:healthycareapp/src/presentation/views/pages/analysis_home/analysis_home_page.dart';
+import 'package:healthycareapp/src/presentation/views/pages/appoiment_home/appoiment_home_page.dart';
+import 'package:healthycareapp/src/presentation/views/pages/chat_home/chat_home_page.dart';
+import 'package:healthycareapp/src/presentation/views/pages/record_home/record_home_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = 'homepage';
@@ -20,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -50,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.only(top: 20),
               width: double.infinity,
               height: 100,
               decoration: BoxDecoration(
@@ -59,7 +62,7 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 80,
                     height: 80,
                     child: Image.asset('assets/calendar.png')
@@ -89,13 +92,15 @@ class _HomePageState extends State<HomePage> {
                   title: 'Mi Historial',
                   imgLink: 'assets/historial.png',
                   function: (){
-
+                    Navigator.pushNamed(context, RecordHomePage.routeName);
                   },
                 ),
                 CardInformation(
                   title: 'Mis Analisis',
                   imgLink: 'assets/analisis.png',
-                  function: (){},
+                  function: (){
+                    Navigator.pushNamed(context, AnalysisHomePage.routeName);
+                  },
                 )
               ],
             ),
@@ -107,13 +112,15 @@ class _HomePageState extends State<HomePage> {
                   title: 'Separar cita',
                   imgLink: 'assets/calendar.png',
                   function: (){
-                    Navigator.pushNamed(context, AppoimentHome.routeName);
+                    Navigator.pushNamed(context, AppoimentHomePage.routeName);
                   },
                 ),
                 CardInformation(
                   title: 'Dudas',
                   imgLink: 'assets/chat.png',
-                  function: (){},
+                  function: (){
+                    Navigator.pushNamed(context, ChatHomePage.routeName);
+                  },
                 )
               ],
             ),
