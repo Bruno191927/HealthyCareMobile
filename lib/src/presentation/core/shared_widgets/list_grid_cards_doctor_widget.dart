@@ -12,7 +12,7 @@ class ListGridCardsDoctorWidget extends StatelessWidget {
           sliver: SliverGrid(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              mainAxisExtent: 160,
+              mainAxisExtent: 210,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20
             ),
