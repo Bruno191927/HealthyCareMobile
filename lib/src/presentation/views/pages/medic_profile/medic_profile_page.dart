@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
+import 'package:healthycareapp/src/presentation/core/shared_widgets/button_fill_widget.dart';
+import 'package:healthycareapp/src/presentation/core/shared_widgets/grid_hours_widget.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/list_doctor_days_widget.dart';
 import 'package:healthycareapp/src/presentation/core/styles/my_text_styles.dart';
 
@@ -67,30 +69,36 @@ class MedicProfilePage extends StatelessWidget {
                 )
               ),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 width: size.width,
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
                           Text('Selecciona una fecha',style: MyTextStyles.titleStyleBold,)
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 120,
                       child: ListDoctorDaysWidget(),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
                           Text('Selecciona una hora',style: MyTextStyles.titleStyleBold,)
                         ],
                       ),
                     ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(vertical: 15),
+                      height: 200,
+                      child: const GridHoursWidget(),
+                    ),
+                    const ButtonFillWidget(title: 'Separar')
                   ],
                 ),
               ),

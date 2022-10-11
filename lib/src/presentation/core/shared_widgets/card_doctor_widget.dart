@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
-import 'package:healthycareapp/src/presentation/core/shared_widgets/button_fill_widget.dart';
-import 'package:healthycareapp/src/presentation/core/shared_widgets/button_link_widget.dart';
 import 'package:healthycareapp/src/presentation/views/pages/medic_profile/medic_profile_page.dart';
 
 class CardDoctorWidget extends StatelessWidget {
