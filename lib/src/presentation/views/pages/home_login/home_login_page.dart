@@ -50,6 +50,13 @@ class HomeLoginPage extends StatelessWidget {
             function: (){
               Navigator.pushNamed(context, SignInPage.routeName);
             },
+          ),
+          const SizedBox(height: 20),
+          ButtonFillWidget(
+            title: 'Soy Doctor',
+            function: (){
+              Navigator.pushNamed(context, SignInPage.routeName);
+            },
           )
         ],
       )
