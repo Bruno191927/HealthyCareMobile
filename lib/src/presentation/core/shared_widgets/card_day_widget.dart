@@ -21,7 +21,7 @@ class CardDayWidget extends StatelessWidget {
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-            color: MyColors.white,
+            color: FunctionsUtils.compareDates(appoimentProvider.day, dateTime)?MyColors.primary : MyColors.white,
             borderRadius: BorderRadius.circular(15),
             boxShadow: const [
               BoxShadow(

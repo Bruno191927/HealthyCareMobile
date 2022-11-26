@@ -10,12 +10,15 @@ class AppoimentProvider with ChangeNotifier{
 
   DoctorModel? _doctorSelected;
 
+  DateTime? _date;
+
   DateTime get day => _day;
   String get hour => _hour;
   String get minute => _minute;
   String get doctor => _doctor;
   String get category => _category;
   DoctorModel? get doctorSelected => _doctorSelected;
+  DateTime? get date => _date;
 
   void selectDay(DateTime date){
     _day = date;
@@ -44,6 +47,11 @@ class AppoimentProvider with ChangeNotifier{
 
   void changeDoctorSelected(DoctorModel model){
     _doctorSelected = model;
+    notifyListeners();
+  }
+
+  void selectDate(DateTime date){
+    _date = date;
     notifyListeners();
   }
 }
