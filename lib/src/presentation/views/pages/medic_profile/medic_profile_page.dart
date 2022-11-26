@@ -4,6 +4,8 @@ import 'package:healthycareapp/src/presentation/core/shared_widgets/button_fill_
 import 'package:healthycareapp/src/presentation/core/shared_widgets/grid_hours_widget.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/list_doctor_days_widget.dart';
 import 'package:healthycareapp/src/presentation/core/styles/my_text_styles.dart';
+import 'package:healthycareapp/src/presentation/logic/provider/appoiment_provider.dart';
+import 'package:provider/provider.dart';
 
 class MedicProfilePage extends StatelessWidget {
   static const routeName = "MedicProfilePage";
@@ -11,6 +13,7 @@ class MedicProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appoimentProvider = Provider.of<AppoimentProvider>(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -35,23 +38,23 @@ class MedicProfilePage extends StatelessWidget {
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Dr. Steven Strange',style: TextStyle(fontSize: 26,color: Colors.white),)
+                    children: [
+                      Text(appoimentProvider.doctorSelected!.usuario.firstName,style: TextStyle(fontSize: 26,color: Colors.white),)
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Medico Cirujano',style: TextStyle(fontSize: 18,color: Colors.white70))
+                    children: [
+                      Text(appoimentProvider.doctorSelected!.categoria,style: TextStyle(fontSize: 18,color: Colors.white70))
                     ],
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Flexible(
-                          child: Text('Dr. Steven Strange Dr. Steven Strange Dr. Steven Strange Dr. Steven Strange Dr. Steven Strange',style: TextStyle(fontSize: 14,color: Colors.black38),textAlign: TextAlign.center,)
+                          child: Text(appoimentProvider.doctorSelected!.descripcion,style: TextStyle(fontSize: 14,color: Colors.black38),textAlign: TextAlign.center,)
                         )
                       ],
                     ),

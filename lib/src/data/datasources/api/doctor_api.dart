@@ -3,18 +3,6 @@ import 'package:healthycareapp/src/data/datasources/local/auth.dart';
 import 'package:healthycareapp/src/data/models/doctor_model.dart';
 import 'package:healthycareapp/src/presentation/env/env_config.dart';
 
-class DoctorsModel{
-  List<DoctorModel> items = [];
-  DoctorsModel();
-  DoctorsModel.fromJsonList(List<dynamic> jsonList){
-    if(jsonList.isEmpty) return ;
-    for (var item in jsonList) {
-      final citaData = DoctorModel.fromJson(item);
-      items.add(citaData);
-    }
-  }
-}
-
 class DoctorApi{
 
   DoctorApi._internal();
@@ -59,7 +47,7 @@ class DoctorApi{
   Future<List<DoctorModel>> findCitas() async{
     final token = await Auth.instance.accessToken;
     try {
-      final Response response = await _dio.get('/findAll');
+      final Response response = await _dio.get('/findAll',options: Options(headers: {"Auth":token}));
       if(response.statusCode == 200){
         final doctor = DoctorsModel.fromJsonList(response.data);
         return doctor.items;

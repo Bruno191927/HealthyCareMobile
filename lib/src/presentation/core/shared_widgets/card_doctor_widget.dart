@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:healthycareapp/src/data/models/doctor_model.dart';
 import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
+import 'package:healthycareapp/src/presentation/logic/provider/appoiment_provider.dart';
 import 'package:healthycareapp/src/presentation/views/pages/medic_profile/medic_profile_page.dart';
+import 'package:provider/provider.dart';
 
 class CardDoctorWidget extends StatelessWidget {
   final DoctorModel model;
@@ -9,8 +11,10 @@ class CardDoctorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appoimentProvider = Provider.of<AppoimentProvider>(context);
     return GestureDetector(
       onTap: (){
+        appoimentProvider.changeDoctorSelected(model);
         Navigator.pushNamed(context, MedicProfilePage.routeName);
       },
       child: Container(
