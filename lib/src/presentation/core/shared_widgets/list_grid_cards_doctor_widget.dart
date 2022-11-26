@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:healthycareapp/src/data/models/doctor_model.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/card_doctor_widget.dart';
 class ListGridCardsDoctorWidget extends StatelessWidget {
-  const ListGridCardsDoctorWidget({ Key? key }) : super(key: key);
+  final List<DoctorModel> models;
+  const ListGridCardsDoctorWidget({ Key? key,required this.models}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,9 @@ class ListGridCardsDoctorWidget extends StatelessWidget {
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index){
-                return const CardDoctorWidget();
+                return CardDoctorWidget(model: models[index],);
               },
-              childCount: 20
+              childCount: models.length
             ),
           )
         )

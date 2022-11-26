@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:healthycareapp/src/domain/entity/analisis.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/card_analysis_widget.dart';
 class ListAnalysisWidget extends StatelessWidget {
-  const ListAnalysisWidget({ Key? key }) : super(key: key);
+  final List<Analisis> models;
+  const ListAnalysisWidget({ Key? key, required this.models}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +14,9 @@ class ListAnalysisWidget extends StatelessWidget {
           sliver: SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context,int index){
-                return const CardAnalysisWidget();
+                return CardAnalysisWidget(model: models[index],);
               },
-              childCount: 10
+              childCount: models.length
             ),
           ),
         )

@@ -7,6 +7,7 @@ import 'package:healthycareapp/src/presentation/views/pages/login/login_page.dar
 import 'package:healthycareapp/src/presentation/views/pages/sign_in/sign_in_page.dart';
 
 class HomeLoginPage extends StatelessWidget {
+  static const routeName = "homeLoginPage";
   const HomeLoginPage({ Key? key }) : super(key: key);
 
   @override
@@ -51,13 +52,6 @@ class HomeLoginPage extends StatelessWidget {
               Navigator.pushNamed(context, SignInPage.routeName);
             },
           ),
-          const SizedBox(height: 20),
-          ButtonFillWidget(
-            title: 'Soy Doctor',
-            function: (){
-              Navigator.pushNamed(context, SignInPage.routeName);
-            },
-          )
         ],
       )
     );

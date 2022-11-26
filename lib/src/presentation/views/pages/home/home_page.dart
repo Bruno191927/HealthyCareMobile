@@ -52,32 +52,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 20),
-              width: double.infinity,
-              height: 100,
-              decoration: BoxDecoration(
-                color: MyColors.primary,
-                borderRadius: BorderRadius.circular(20)
-              ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Image.asset('assets/calendar.png')
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 20,),
-                      Text('Tu proxima cita: ',style: MyTextStyles.titleStyleWhiteBold),
-                      Text('19 de Noviembre',style: MyTextStyles.titleStyleBold)
-                    ],
-                  )
-                ],
-              ),
-            ),
             const SizedBox(height: 20),
             Row(
               children: [

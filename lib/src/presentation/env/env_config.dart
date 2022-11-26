@@ -1,0 +1,1 @@
+const String backendHost = 'https://healty-back.onrender.com/api';

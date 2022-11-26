@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
 
 class CardHourWidget extends StatelessWidget {
-  const CardHourWidget({ Key? key }) : super(key: key);
+  final int index;
+  const CardHourWidget({ Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,8 @@ class CardHourWidget extends StatelessWidget {
             )
           ],
       ),
-      child: const Center(
-        child: Text('08:00 am')
+      child: Center(
+        child: Text('1${index+2}:00 am')
       )
     );
   }

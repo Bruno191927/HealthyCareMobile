@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/card_day_widget.dart';
+import 'package:healthycareapp/src/presentation/logic/provider/appoiment_provider.dart';
+import 'package:provider/provider.dart';
 
 class ListDoctorDaysWidget extends StatelessWidget {
   const ListDoctorDaysWidget({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final appoimentProvider = Provider.of<AppoimentProvider>(context);
     List<DateTime> days = _getDays();
     return CustomScrollView(
       scrollDirection: Axis.horizontal,
@@ -15,7 +18,7 @@ class ListDoctorDaysWidget extends StatelessWidget {
           sliver: SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context,int index){
-                return CardDayWidget(dateTime: days[index]);
+                return CardDayWidget(dateTime: days[index],selectedDateTime: appoimentProvider.day);
               },
               childCount: days.length
             )

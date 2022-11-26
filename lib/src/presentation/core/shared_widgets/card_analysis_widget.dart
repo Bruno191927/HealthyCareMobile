@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:healthycareapp/src/domain/entity/analisis.dart';
 import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
 import 'package:healthycareapp/src/presentation/core/styles/my_text_styles.dart';
 
 class CardAnalysisWidget extends StatelessWidget {
-  const CardAnalysisWidget({ Key? key }) : super(key: key);
+  final Analisis model;
+  const CardAnalysisWidget({ Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,34 +27,21 @@ class CardAnalysisWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text('Titulo',style: MyTextStyles.normalStylePrimaryBold)
+              Text(model.descripcion,style: MyTextStyles.normalStylePrimaryBold)
             ],
           ),
           Row(
             children: [
-              Text('08 de Agosto del 2022',style: MyTextStyles.normalStyleGray)
+              Text(model.cita.fechaCompleta,style: MyTextStyles.normalStyleGray)
             ],
           ),
           Row(
-            children: const [
+            children: [
               Flexible(
-                child: Text('hello hello hello hello hello hello hello helloooo hello hello hello hello hello hello hello hello')
+                child: Text(model.descripcion)
               )
             ],
           ),
-          const SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              GestureDetector(
-                child: const Icon(Icons.visibility,color: Colors.blueAccent,),
-              ),
-              const SizedBox(width: 5),
-              GestureDetector(
-                child: Icon(Icons.download,color: MyColors.primary),
-              )
-            ],
-          )
         ],
       ),
     );

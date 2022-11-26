@@ -3,7 +3,8 @@ import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
 class InputLinearWidget extends StatelessWidget {
   final String title;
   final String placeholder;
-  const InputLinearWidget({ Key? key,required this.title,required this.placeholder}) : super(key: key);
+  final TextEditingController? controller;
+  const InputLinearWidget({ Key? key,required this.title,required this.placeholder,this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class InputLinearWidget extends StatelessWidget {
               hintText: placeholder,
               labelText: title,
             ),
+            controller: controller,
           )
         ],
       ),

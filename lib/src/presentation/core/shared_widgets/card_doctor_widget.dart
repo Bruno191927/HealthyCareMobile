@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:healthycareapp/src/data/models/doctor_model.dart';
 import 'package:healthycareapp/src/presentation/core/colors/my_colors.dart';
 import 'package:healthycareapp/src/presentation/views/pages/medic_profile/medic_profile_page.dart';
 
 class CardDoctorWidget extends StatelessWidget {
-  const CardDoctorWidget({ Key? key }) : super(key: key);
+  final DoctorModel model;
+  const CardDoctorWidget({ Key? key,required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,23 +40,16 @@ class CardDoctorWidget extends StatelessWidget {
               const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text('Dr. Steven Strange',style: TextStyle(fontSize: 16),)
+                children:[
+                  Text(model.usuario.firstName,style: TextStyle(fontSize: 16),)
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text('Medico Cirujano',style: TextStyle(color: Color(0xffa1a1a1)),)
+                children:[
+                  Text(model.categoria,style: TextStyle(color: Color(0xffa1a1a1)),)
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.star,color: Colors.yellow,),
-                  Text('4.5')
-                ],
-              )
             ],
           ),
         ),

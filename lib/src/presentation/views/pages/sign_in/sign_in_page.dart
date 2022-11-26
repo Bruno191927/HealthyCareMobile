@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:healthycareapp/src/data/datasources/api/auth_api.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/button_fill_widget.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/button_link_widget.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/input_linear_widget.dart';
@@ -13,6 +14,12 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController documentController = TextEditingController();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -29,16 +36,26 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
             ),
-            const InputLinearWidget(title: 'Email',placeholder: 'Ingrese un email'),
-            const InputLinearWidget(title: 'Nombre',placeholder: 'Ingrese su nombre'),
-            const InputLinearWidget(title: 'Numero de Documento',placeholder: 'Ingrese su numero de documento'),
-            const InputLinearWidget(title: 'Contraseña',placeholder: 'Ingrese una contraseña'),
-            const InputLinearWidget(title: 'Verificar Contraseña',placeholder: 'Ingrese una contraseña nuevamente'),
+            InputLinearWidget(title: 'Email',placeholder: 'Ingrese un email',controller: emailController,),
+            InputLinearWidget(title: 'Nombre',placeholder: 'Ingrese su nombre',controller: nameController,),
+            InputLinearWidget(title: 'Numero de Documento',placeholder: 'Ingrese su numero de documento',controller: documentController,),
+            InputLinearWidget(title: 'Contraseña',placeholder: 'Ingrese una contraseña',controller: passwordController,),
             const SizedBox(height: 50),
             ButtonFillWidget(
               title: 'Registrate',
-              function: (){
-                Navigator.pushNamed(context, HomePage.routeName);
+              function: () async{
+                final response = await AuthApi.instance.signIn(
+                  email: emailController.text, 
+                  password: passwordController.text, 
+                  firstName: nameController.text, 
+                  lastName: "", 
+                  cellPhone: "", 
+                  documentNumber: documentController.text
+                );
+                
+                if(response){
+                  Navigator.pushNamed(context, HomePage.routeName);
+                }
               }
             ),
             const SizedBox(height: 20),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthycareapp/src/data/datasources/api/analisis_api.dart';
+import 'package:healthycareapp/src/domain/entity/analisis.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/list_analysis_widget.dart';
 import 'package:healthycareapp/src/presentation/core/styles/my_text_styles.dart';
 
@@ -21,9 +23,23 @@ class AnalysisHomePage extends StatelessWidget {
           ),
           ),
           const SizedBox(height: 10),
-          const SizedBox(
+          SizedBox(
             height: 600,
-            child: ListAnalysisWidget(),
+            child: FutureBuilder(
+              future: AnalisisApi.instance.findAnalisis(),
+              builder: (BuildContext context, AsyncSnapshot<List<Analisis>> snapshot) {
+                if(snapshot.hasData){
+                  return ListAnalysisWidget(models: snapshot.data!);
+                }
+                else{
+                  return const Center(
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Color(0xffff3366)),
+                      ),
+                     );
+                }
+              },
+            ),
           )
         ],
       ),

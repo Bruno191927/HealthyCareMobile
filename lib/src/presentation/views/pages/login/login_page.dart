@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:healthycareapp/src/data/datasources/api/auth_api.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/button_fill_widget.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/button_link_widget.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/input_linear_widget.dart';
@@ -16,6 +17,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,14 +39,17 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 20),
-            const InputLinearWidget(title: 'Email',placeholder: 'Ingrese su email'),
+            InputLinearWidget(title: 'Email',placeholder: 'Ingrese su email',controller: emailController),
             const SizedBox(height: 20),
-            const InputLinearWidget(title: 'Contraseña',placeholder: 'Ingrese su contraseña'),
+            InputLinearWidget(title: 'Contraseña',placeholder: 'Ingrese su contraseña',controller: passwordController,),
             const SizedBox(height: 50),
             ButtonFillWidget(
               title: 'Ingresa',
-              function: (){
-                Navigator.pushNamed(context, HomePage.routeName);
+              function: () async{
+                final response = await AuthApi.instance.login(email: emailController.text, password: passwordController.text);
+                if(response){
+                  Navigator.pushNamed(context, HomePage.routeName);
+                }
               }
             ),
             const SizedBox(height: 20),

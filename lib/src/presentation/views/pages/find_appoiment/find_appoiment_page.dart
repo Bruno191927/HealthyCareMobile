@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:healthycareapp/src/data/datasources/api/auth_api.dart';
+import 'package:healthycareapp/src/data/datasources/api/doctor_api.dart';
+import 'package:healthycareapp/src/data/datasources/local/auth.dart';
+import 'package:healthycareapp/src/data/models/doctor_model.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/list_cards_category_widget.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/list_grid_cards_doctor_widget.dart';
 import 'package:healthycareapp/src/presentation/core/shared_widgets/search_widget.dart';
@@ -38,11 +42,23 @@ class FindAppoimentPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            const SearchWidget(),
-            const SizedBox(height: 10),
-            const SizedBox(
+            SizedBox(
               height: 380,
-              child: ListGridCardsDoctorWidget(),
+              child: FutureBuilder(
+                future: DoctorApi.instance.findCitas(),
+                builder: (BuildContext context, AsyncSnapshot<List<DoctorModel>> snapshot) {
+                  if(snapshot.hasData){
+                    return ListGridCardsDoctorWidget(models: snapshot.data!);
+                  }
+                  else{
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Color(0xffff3366)),
+                      ),
+                     );
+                  }
+                },
+              ),
             )
           ],
         ),

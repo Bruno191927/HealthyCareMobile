@@ -24,9 +24,9 @@ class _GridHoursWidgetState extends State<GridHoursWidget> {
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index){
-                return const CardHourWidget();
+                return CardHourWidget(index: index);
               },
-              childCount: 20
+              childCount: 5
             ),
           )
         )
